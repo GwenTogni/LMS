@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="main.css">
+</head>
+<body>
+	<div
+		class="sfondo"
+	>
+	</div>
+
+<!-- TITOLO -->
+	<div>
+	<h1
+		class="titolo1"
+		id="R"
+	>
+		R
+	</h1>
+
+	<h1
+		class="titolo2"
+		id="G"
+	>
+		G
+	</h1>
+
+	<h1
+		class="titolo3"
+		id="B"
+	>
+		B
+	</h1>
+
+	</div>
+
+<!-- "ERRORE" -->
+	<button
+		class="contenitore"
+		id="bottone"
+		onclick="compareTesto(event, 'testo')"
+	>
+		click here
+	</button>
+
+	<h2
+		class="titoletto2"
+		id="bottone2"
+	>
+		Error_404_not_found
+	</h2>
+
+	<div
+		class="titoletto"
+		id="testo"
+	>
+		Esiste davvero</br>
+		un modo di vedere</br>
+		normale e corretto?</br>
+		<p style="font-size: 40px;">
+		;-)
+		</p>
+	</div>
+
+<!-- INDICE -->
+	<div
+		class="indice">
+	<button
+		class="pulsantiIndice"
+	>
+		SALVA PNG
+	</button>
+	</br>
+	</br>
+	</br>
+
+	<form action="https://ixd-supsi.github.io/specchiodellemiebrame/">
+		<button
+			class="pulsantiIndice"
+			type="submit"
+		>
+			INDICE
+		</button>
+		</form>
+	</br>
+	</br>
+	</br>
+
+	<form action="https://convertingcolors.com/rgb-color-255_0_0.html?search=RGB(255,%200,%200)">
+		<button
+			class="pulsantiIndice"
+			type="submit"
+		>
+			convertingcolors.com
+		</button>
+	</form>
+
+	<form action="https://www.toptal.com/designers/colorfilter">
+		<button
+			class="pulsantiIndice"
+		>
+			toptal.com
+		</button>
+	</form>
+
+	<form action="https://www.color-blindness.com/coblis-color-blindness-simulator/">
+		<button
+			class="pulsantiIndice"
+		>
+			color-blindness.com
+		</button>
+	</form>
+
+	<form action="https://wonderfulengineering.com/people-different-conditions-view-world/">
+		<button
+			class="pulsantiIndice"
+		>
+			wonderfulengineering.com
+		</button>
+	</form>	
+
+	</div>
+
+<!-- TITOLETTI -->
+	<div>
+		<div class="titolett" id="titoletto">
+			<h2>VUOTO</h2>
+		</div>
+
+		<div class="titoletto" id="titoletto1">
+			<h2>Protanopia</h2>
+		</div>
+
+		<div class="titoletto" id="titoletto2">
+			<h2>Deuteranopia</h2>
+		</div>
+
+		<div class="titoletto" id="titoletto3">
+			<h2>Tritanopia</h2>
+		</div>
+
+		<div class="titoletto" id="titoletto4">
+			<h2>Acromatopsia</h2>
+		</div>
+	</div>
+
+<!-- PULSANTI -->
+	<div
+		class="interfaccia">
+		<button
+			class="pulsanti"
+			id="v1"
+			onclick="compareTitoletto(event, ''); modo='noVerde';"
+			>
+				DEUTERANOPIA
+			</button>
+			<br>
+			<br>
+			<br>
+
+		<button 
+			class="pulsanti"
+			id="v2"
+			onclick="compareTitoletto(event, ''); modo='noRosso';"
+		>
+			PROTANOPIA
+		</button>
+
+		<br>
+		<br>
+		<br>
+		<button
+			class="pulsanti"
+			id="v3"
+			onclick="compareTitoletto(event, ''); modo='noBluGiallo';"
+			>
+				TRITANOPIA
+		</button>
+
+		<br>
+		<br>
+		<br>
+		<button
+			class="pulsanti"
+			id="v4"
+			onclick="compareTitoletto(event, ''); modo='bn';"
+			>
+				ACROMATOPSIA
+		</button>
+
+		<br>
+		<br>
+		<br>
+		<button
+			class="pulsanti"
+			id="v5"
+			onclick="compareTitoletto(event, ''); modo='zero';"
+			>
+				IPOVISIONE
+		</button>
+
+		<br>
+		<br>
+		<br>
+		<button
+			class="pulsanti"
+			id="v6"
+			onclick="compareTitoletto(event, ''); modo='errore';
+			error404(event, 'bottone', 'bottone2')"
+		>
+			VISTA NORMALE
+		</button>
+	</div>
+
+<!-- SCRIPT WEBCAM -->
+	<script>
+
+		let capture
+
+		var modo = 'red'
+
+		function setup() {
+  			capture = createCapture(VIDEO)
+	// Ridimensionamento proporzionale
+			capture.size(640/480*600, 480/480*600)
+	// Nasconde immagine catturata dalla webcam
+  			capture.hide()
+
+			const c = createCanvas(600, 600)
+			c.elt.id= "webcam"
+		}
+
+		function draw() {
+			background(0)
+			push()
+			translate(width/2, height/2)
+			scale(-1, 1)
+			image(capture, -capture.width/2, -capture.height/2)
+
+			capture.loadPixels()
+
+			for (let j=0; j<capture.width; j++) {
+				for (let i=0; i<capture.width; i++) {
+				
+				// estrae i componeneti di rosso, verde e blu nel riquadro
+
+					if (modo == 'niente') {
+
+					} else if (modo == 'bn') {
+						const indice= (i + j * capture.width) * 4
+						const r = capture.pixels[indice + 0]
+						const g = capture.pixels[indice + 1]
+						const b = capture.pixels[indice + 2]
+						capture.pixels[indice + 0] = r/3+g/3+b/3
+						capture.pixels[indice + 1] = r/3+g/3+b/3
+						capture.pixels[indice + 2] = r/3+g/3+b/3
+
+					} else if (modo == 'zero') {
+
+					} else if (modo == 'noVerde') {
+						const indice= (i + j * capture.width) * 4
+						const r = capture.pixels[indice + 0]
+						const g = capture.pixels[indice + 1]
+						const b = capture.pixels[indice + 2]
+
+						capture.pixels[indice + 0] = (r*162 + g*122 + b*0)/284
+						capture.pixels[indice + 1] = (r*255 + g*211 + b*143)/609
+						capture.pixels[indice + 2] = (r*0 + g*51 + b*177)/228
+
+					} else if (modo == 'noRosso') {
+						const indice= (i + j * capture.width) * 4
+						const r = capture.pixels[indice + 0]
+						const g = capture.pixels[indice + 1]
+						const b = capture.pixels[indice + 2]
+
+						capture.pixels[indice + 0] = (r*144 + g*129 + b*33)/306
+						capture.pixels[indice + 1] = (r*246 + g*218 + b*0)/464
+						capture.pixels[indice + 2] = (r*0 + g*47 + b*192)/239
+
+					} else if (modo == 'noBluGiallo') {
+						const indice= (i + j * capture.width) * 4
+						const r = capture.pixels[indice + 0]
+						const g = capture.pixels[indice + 1]
+						const b = capture.pixels[indice + 2]
+
+						capture.pixels[indice + 0] = (r*253 + g*24 + b*0)/277
+						capture.pixels[indice + 1] = (r*113 + g*236 + b*255)/604
+						capture.pixels[indice + 2] = (r*0 + g*55 + b*149)/204
+
+					} else if (modo == 'errore') {
+						const indice= (i + j * capture.width) * 4
+						const r = capture.pixels[indice + 0]
+						const g = capture.pixels[indice + 1]
+						const b = capture.pixels[indice + 2]
+
+						capture.pixels[indice + 0] = 0
+						capture.pixels[indice + 1] = 0
+						capture.pixels[indice + 2] = 0
+					}
+				}
+			}
+
+		//	const copia = get()
+		//	translate(-width/2 + width/2, height/2 - height/2)
+		//	scale(-1, 1)
+		//	image(copia, -width/2, -height/2)
+
+			capture.updatePixels()
+		}
+	</script>
+
+<!-- SCRIPT SALVA PNG -->
+	<script>
+		function keyPressed(){
+			//	var pulsanti, indice;
+				if (key == 's') {
+				save(Date.now() + '.png')
+				}
+
+			capture.updatePixels()
+			image(capture, 0, 0, capture.width, capture.height)
+		}
+	</script>
+
+<!-- SCRIPT PULSANTI -->
+	<script type="text/javascript">
+
+		function compareTitoletto(evt, titolo, colore) {
+			
+			console.log(titolo)
+
+			    var titoletto, titoli, interfaccia, p5Canvas;
+
+            titoletto = document.getElementsByClassName("titoletto");
+            for (i = 0; i < titoletto.length; i++) {
+                 titoletto[i].style.display = "none";
+			}
+
+			titoletto2 = document.getElementsByClassName("titoletto2");
+            for (i = 0; i < titoletto2.length; i++) {
+                 titoletto2[i].style.display = "none";
+			}
+
+			contenitore = document.getElementsByClassName("contenitore");
+           	for (i = 0; i < contenitore.length; i++) {
+                contenitore[i].style.display = "none";
+			}
+
+			pulsanti = document.getElementsByClassName("pulsanti");
+            for (i = 0; i < pulsanti.length; i++) {
+                pulsanti[i].className = pulsanti[i].className.replace("active");
+            }
+
+           	document.querySelector("#titoletto").innerHTML = titolo
+        }
+
+		function error404(evt, bottone, bottone2) {
+			console.log(bottone)
+			    var p5Canvas, contenitore, error404, titoletto, titoletto2;
+
+			document.getElementById(bottone).style.display = "block"
+			document.getElementById(bottone2).style.display = "block"
+        }
+
+		function compareTesto(evt, testo) {
+			console.log(testo)
+			    var p5Canvas, contenitore, error404, titoletto1;
+			
+			document.getElementById(testo).style.display = "block";
+		}
+
+		const b1 = document.querySelector("#v1")
+			b1.addEventListener("click", function(e) {
+				b1.style.color="lightgrey";
+				b1.style.fontWeight="bold";
+            	b2.style.color="grey";
+				b2.style.fontWeight="normal";
+            	b3.style.color="grey";
+				b3.style.fontWeight="normal";
+            	b4.style.color="grey";
+				b4.style.fontWeight="normal";
+            	b5.style.color="grey";
+				b5.style.fontWeight="normal";
+            	b6.style.color="grey";
+				b6.style.fontWeight="normal";
+				document.getElementById("webcam").style.filter = "none";
+
+				R.style.color="rgb(162, 122, 0)";
+				R.style.filter = "none";
+				G.style.color="rgb(255, 211, 143)";
+				G.style.filter = "none";
+				B.style.color="rgb(0, 51, 177)";
+				B.style.filter = "none";
+			})
+
+		const b2 = document.querySelector("#v2")
+			b2.addEventListener("click", function(e) {
+				b1.style.color="grey";
+				b1.style.fontWeight="normal";
+            	b2.style.color="lightgrey";
+				b2.style.fontWeight="bold";
+            	b3.style.color="grey";
+				b3.style.fontWeight="normal";
+            	b4.style.color="grey";
+				b4.style.fontWeight="normal";
+            	b5.style.color="grey";
+				b5.style.fontWeight="normal";
+            	b6.style.color="grey";
+				b6.style.fontWeight="normal";
+				document.getElementById("webcam").style.filter = "none";
+
+				R.style.color="rgb(144, 129, 33)";
+				R.style.filter = "none";
+				G.style.color="rgb(246, 218, 0)";
+				G.style.filter = "none";
+				B.style.color="rgb(0, 47, 192)";
+				B.style.filter = "none";
+			})
+
+		const b3 = document.querySelector("#v3")
+			b3.addEventListener("click", function(e) {
+				b1.style.color="grey";
+				b1.style.fontWeight="normal";
+            	b2.style.color="grey";
+				b2.style.fontWeight="normal";
+            	b3.style.color="lightgrey";
+				b3.style.fontWeight="bold";
+            	b4.style.color="grey";
+				b4.style.fontWeight="normal";
+            	b5.style.color="grey";
+				b5.style.fontWeight="normal";
+            	b6.style.color="grey";
+				b6.style.fontWeight="normal";
+				document.getElementById("webcam").style.filter = "none";
+
+				R.style.color="rgb(253, 24, 0)";
+				R.style.filter = "none";
+				G.style.color="rgb(113, 236, 255)";
+				G.style.filter = "none";
+				B.style.color="rgb(0, 55, 149)";
+				B.style.filter = "none";
+			})
+
+		const b4 = document.querySelector("#v4")
+			b4.addEventListener("click", function(e) {
+				b1.style.color="grey";
+				b1.style.fontWeight="normal";
+            	b2.style.color="grey";
+				b2.style.fontWeight="normal";
+            	b3.style.color="grey";
+				b3.style.fontWeight="normal";
+            	b4.style.color="lightgrey";
+				b4.style.fontWeight="bold";
+            	b5.style.color="grey";
+				b5.style.fontWeight="normal";
+            	b6.style.color="grey";
+				b6.style.fontWeight="normal";
+				document.getElementById("webcam").style.filter = "none";
+
+				R.style.color="rgb(110, 110, 110)";
+				R.style.filter = "none";
+				G.style.color="rgb(215, 215, 215)";
+				G.style.filter = "none";
+				B.style.color="rgb(67, 67, 67)";
+				B.style.filter = "none";
+			})
+
+		const b5 = document.querySelector("#v5")
+			b5.addEventListener("click", function(e) {
+				b1.style.color="grey";
+				b1.style.fontWeight="normal";
+            	b2.style.color="grey";
+				b2.style.fontWeight="normal";
+            	b3.style.color="grey";
+				b3.style.fontWeight="normal";
+            	b4.style.color="grey";
+				b4.style.fontWeight="normal";
+            	b5.style.color="lightgrey";
+				b5.style.fontWeight="bold";
+            	b6.style.color="grey";
+				b6.style.fontWeight="normal";
+				document.getElementById("webcam").style.filter = "blur(15px)";
+
+				R.style.color="rgb(255, 0, 0)";
+				R.style.filter = "blur(10px)";
+				G.style.color="rgb(0, 255, 0)";
+				G.style.filter = "blur(10px)";
+				B.style.color="rgb(0, 0, 255)";
+				B.style.filter = "blur(10px)";
+			})
+
+		const b6 = document.querySelector("#v6")
+			b6.addEventListener("click", function(e) {
+				b1.style.color="grey";
+				b1.style.fontWeight="normal";
+            	b2.style.color="grey";
+				b2.style.fontWeight="normal";
+            	b3.style.color="grey";
+				b3.style.fontWeight="normal";
+            	b4.style.color="grey";
+				b4.style.fontWeight="normal";
+            	b5.style.color="grey";
+				b5.style.fontWeight="normal";
+            	b6.style.color="lightgrey";
+				b6.style.fontWeight="bold";
+
+				R.style.color="rgb(255, 0, 0)";
+				R.style.filter = "none";
+				G.style.color="rgb(0, 255, 0)";
+				G.style.filter = "none";
+				B.style.color="rgb(0, 0, 255)";
+				B.style.filter = "none";
+			})
+
+		const R = document.querySelector("#R")
+		const G = document.querySelector("#G")
+		const B = document.querySelector("#B")
+
+	</script>
+	<script src="https://cdn.jsdelivr.net/npm/p5@1.4.1/lib/p5.js"></script>
+</body>
+</html>
