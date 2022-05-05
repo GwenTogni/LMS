@@ -13,26 +13,29 @@
 
 <!-- TITOLO -->
 	<div>
-	<h1
+	<button
 		class="titolo1"
 		id="R"
+		onclick="compareTesto(event, 'testo1')"
 	>
-		R
-	</h1>
+		L
+	</button>
 
-	<h1
+	<button
 		class="titolo2"
 		id="G"
+		onclick="compareTesto(event, 'testo2')"
 	>
-		G
-	</h1>
+		M
+	</button>
 
-	<h1
+	<button
 		class="titolo3"
 		id="B"
+		onclick="compareTesto(event, 'testo3')"
 	>
-		B
-	</h1>
+		S
+	</button>
 
 	</div>
 
@@ -62,6 +65,39 @@
 		<p style="font-size: 40px;">
 		;-)
 		</p>
+	</div>
+
+	<div
+		class="descrizioni"
+		id="testo1"
+	>
+		coni ROSSI</br>
+		sensibili alla luce</br>
+		di lunghezza</br>
+		d'onda LUNGA
+	</p>
+	</div>
+
+	<div
+		class="descrizioni"
+		id="testo2"
+	>
+		coni VERDI</br>
+		sensibili alla luce</br>
+		di lunghezza</br>
+		d'onda MEDIA
+	</p>
+	</div>
+
+	<div
+		class="descrizioni"
+		id="testo3"
+	>
+		coni BLU</br>
+		sensibili alla luce</br>
+		di lunghezza</br>
+		d'onda BREVE
+	</p>
 	</div>
 
 <!-- INDICE -->
@@ -393,6 +429,10 @@
 				G.style.filter = "none";
 				B.style.color="rgb(0, 51, 177)";
 				B.style.filter = "none";
+
+				document.getElementById("testo1").style.display = "none";
+				document.getElementById("testo2").style.display = "none";
+				document.getElementById("testo3").style.display = "none";
 			})
 
 		const b2 = document.querySelector("#v2")
@@ -417,6 +457,10 @@
 				G.style.filter = "none";
 				B.style.color="rgb(0, 47, 192)";
 				B.style.filter = "none";
+
+				document.getElementById("testo1").style.display = "none";
+				document.getElementById("testo2").style.display = "none";
+				document.getElementById("testo3").style.display = "none";
 			})
 
 		const b3 = document.querySelector("#v3")
@@ -441,6 +485,10 @@
 				G.style.filter = "none";
 				B.style.color="rgb(0, 55, 149)";
 				B.style.filter = "none";
+
+				document.getElementById("testo1").style.display = "none";
+				document.getElementById("testo2").style.display = "none";
+				document.getElementById("testo3").style.display = "none";
 			})
 
 		const b4 = document.querySelector("#v4")
@@ -465,6 +513,10 @@
 				G.style.filter = "none";
 				B.style.color="rgb(67, 67, 67)";
 				B.style.filter = "none";
+
+				document.getElementById("testo1").style.display = "none";
+				document.getElementById("testo2").style.display = "none";
+				document.getElementById("testo3").style.display = "none";
 			})
 
 		const b5 = document.querySelector("#v5")
@@ -489,6 +541,10 @@
 				G.style.filter = "blur(10px)";
 				B.style.color="rgb(0, 0, 255)";
 				B.style.filter = "blur(10px)";
+
+				document.getElementById("testo1").style.display = "none";
+				document.getElementById("testo2").style.display = "none";
+				document.getElementById("testo3").style.display = "none";
 			})
 
 		const b6 = document.querySelector("#v6")
@@ -512,12 +568,36 @@
 				G.style.filter = "none";
 				B.style.color="rgb(0, 0, 255)";
 				B.style.filter = "none";
+
+				document.getElementById("testo1").style.display = "none";
+				document.getElementById("testo2").style.display = "none";
+				document.getElementById("testo3").style.display = "none";
 			})
 
 		const R = document.querySelector("#R")
-		const G = document.querySelector("#G")
-		const B = document.querySelector("#B")
+			R.addEventListener("click", function(e) {
+				document.getElementById("testo2").style.display = "none";
+				document.getElementById("testo3").style.display = "none";
+			})
 
+		const G = document.querySelector("#G")
+			G.addEventListener("click", function(e) {
+				document.getElementById("testo1").style.display = "none";
+				document.getElementById("testo3").style.display = "none";
+			})
+
+		const B = document.querySelector("#B")
+			B.addEventListener("click", function(e) {
+				document.getElementById("testo2").style.display = "none";
+				document.getElementById("testo1").style.display = "none";
+			})
+		
+		const sfondo = document.querySelector("#sfondo")
+			sfondo.addEventListener("click", function(e) {
+				document.getElementById("testo1").style.display = "none";
+				document.getElementById("testo2").style.display = "none";
+				document.getElementById("testo3").style.display = "none";
+			})
 	</script>
 	<script src="https://cdn.jsdelivr.net/npm/p5@1.4.1/lib/p5.js"></script>
 </body>
