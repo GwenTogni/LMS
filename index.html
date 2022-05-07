@@ -3,6 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>LMS</title>
 	<link rel="stylesheet" href="main.css">
 </head>
 <body>
@@ -105,6 +106,7 @@
 		class="indice">
 	<button
 		class="pulsantiIndice"
+		onclick="saveButton()"
 	>
 		SALVA PNG
 	</button>
@@ -159,26 +161,21 @@
 
 	</div>
 
-<!-- TITOLETTI -->
+<!-- FILTRI WEBCAM -->
 	<div>
-		<div class="titolett" id="titoletto">
-			<h2>VUOTO</h2>
+		<div class="titoletto" id="titoletto">
 		</div>
 
 		<div class="titoletto" id="titoletto1">
-			<h2>Protanopia</h2>
 		</div>
 
 		<div class="titoletto" id="titoletto2">
-			<h2>Deuteranopia</h2>
 		</div>
 
 		<div class="titoletto" id="titoletto3">
-			<h2>Tritanopia</h2>
 		</div>
 
 		<div class="titoletto" id="titoletto4">
-			<h2>Acromatopsia</h2>
 		</div>
 	</div>
 
@@ -189,12 +186,11 @@
 			class="pulsanti"
 			id="v1"
 			onclick="compareTitoletto(event, ''); modo='noVerde';"
-			>
-				DEUTERANOPIA
-			</button>
-			<br>
-			<br>
-			<br>
+		>
+			DEUTERANOPIA
+		</button>
+		<br>
+		<br>
 
 		<button 
 			class="pulsanti"
@@ -203,43 +199,39 @@
 		>
 			PROTANOPIA
 		</button>
+		<br>
+		<br>
 
-		<br>
-		<br>
-		<br>
 		<button
 			class="pulsanti"
 			id="v3"
 			onclick="compareTitoletto(event, ''); modo='noBluGiallo';"
-			>
-				TRITANOPIA
+		>
+			TRITANOPIA
 		</button>
+		<br>
+		<br>
 
-		<br>
-		<br>
-		<br>
 		<button
 			class="pulsanti"
 			id="v4"
 			onclick="compareTitoletto(event, ''); modo='bn';"
-			>
-				ACROMATOPSIA
+		>
+			ACROMATOPSIA
 		</button>
+		<br>
+		<br>
 
-		<br>
-		<br>
-		<br>
 		<button
 			class="pulsanti"
 			id="v5"
 			onclick="compareTitoletto(event, ''); modo='zero';"
-			>
-				IPOVISIONE
+		>
+			IPOVISIONE
 		</button>
+		<br>
+		<br>
 
-		<br>
-		<br>
-		<br>
 		<button
 			class="pulsanti"
 			id="v6"
@@ -255,7 +247,7 @@
 
 		let capture
 
-		var modo = 'red'
+		var modo = 'niente'
 
 		function setup() {
   			capture = createCapture(VIDEO)
@@ -283,6 +275,14 @@
 				// estrae i componeneti di rosso, verde e blu nel riquadro
 
 					if (modo == 'niente') {
+						const indice= (i + j * capture.width) * 4
+						const r = capture.pixels[indice + 0]
+						const g = capture.pixels[indice + 1]
+						const b = capture.pixels[indice + 2]
+
+						capture.pixels[indice + 0] = 150
+						capture.pixels[indice + 1] = 150
+						capture.pixels[indice + 2] = 150
 
 					} else if (modo == 'bn') {
 						const indice= (i + j * capture.width) * 4
